@@ -1,0 +1,24 @@
+rr:
+      joint_state_controller:
+        type: joint_state_controller/JointStateController
+        publish_rate: 50
+
+      l_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: joint_left_front
+        pid: {p: 100.0, i: 0.01, d: 10.0, i_clamp_max: 0.0, i_clamp_max: 1.0}
+
+      r_position_controller:
+        type: effort_controllers/JointPositionController
+        joint: joint_right_front
+        pid: {p: 100.0, i: 0.01, d: 10.0, i_clamp_max: 0.0, i_clamp_max: 1.0}
+
+r_velocity_controller:
+  type: velocity_controllers/JointVelocityController
+  joint: joint_right_back
+  pid: {p: 100.0, i: 0.01, d: 10.0, i_clamp_max: 0.0, i_clamp_max: 1.0}
+
+l_velocity_controller:
+  type: velocity_controllers/JointVelocityController
+  joint: joint_left_back
+  pid: {p: 100.0, i: 0.01, d: 10.0, i_clamp_max: 0.0, i_clamp_max: 1.0}

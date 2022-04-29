@@ -1,0 +1,23 @@
+<!-- 组合小车-->
+<robot name="my_car" xmlns:xacro="http://wiki.ros.org/xacro">
+    <xacro:arg name="gpu" default="false"/>
+    <xacro:property name="gpu" value="$(arg gpu)" />
+
+    <!-- 小车本体 -->
+    <xacro:include filename="autolabor_pro1.xacro" />
+
+    <!--雷达配置-->
+    <xacro:include filename="$(find robosense_description)/urdf/RS-16.urdf.xacro"/>
+
+    <!---->
+    <RS-16 parent="base_link" name="robosense" topic="/rs_points" hz="20" samples="900" gpu="${gpu}">
+        <origin xyz="0 0 0.4" rpy="0 0 0" />
+    </RS-16>
+
+    <!-- 调用16线雷达宏文件 -->
+    <!-- <xacro:RS-16/> -->
+
+    <!-- 机器人本体宏文件 -->
+    <autolabor_pro1/> 
+
+</robot>
